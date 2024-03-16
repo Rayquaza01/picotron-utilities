@@ -17,6 +17,12 @@ Includes
         * `grep _init` (searches for `_init` recursively through pwd)
         * `grep test file1.txt` (searches for `test` in `file1.txt`)
         * `grep hello desktop` (searches for `hello` recursively through `desktop/`)
+* `frange` - print a file range with line numbers
+    * examples:
+        * `frange file.txt` (prints `file.txt` with line numbers)
+        * `frange file.txt 0 10` (prints first 10 lines)
+        * `frange file.txt 20` (prints starting from line 20 to the end of the file)
+        * `frange file.txt 20 10` (prints 10 lines starting from line 20)
 
 ## Usage
 
