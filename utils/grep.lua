@@ -36,7 +36,7 @@ function search_file(pattern, file, print_fname)
 					if print_fname then
 						output = output .. string.format("%s:%d		%s", file, i, lines[i]) .. "\n"
 					else
-						output = output .. string.format("%d	%s", i, lines[i]) .. "\n"
+						output = output .. string.format("%d		%s", i, lines[i]) .. "\n"
 					end
 
 					-- if line matched once, stop checking
