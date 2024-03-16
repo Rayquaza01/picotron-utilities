@@ -25,7 +25,7 @@ if (length <= 0) then
 	length = #lines
 end
 
-for i = start, min(start + length, #lines), 1 do
+for i = start, min(start + length - 1, #lines), 1 do
 	output = output .. string.format("%d		%s", i, lines[i]) .. "\n"
 end
 
