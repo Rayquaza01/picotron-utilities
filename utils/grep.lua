@@ -29,7 +29,7 @@ function search_file(pattern, file, print_fname)
 		-- print("searching " .. file)
 
 		for i = 1, #lines, 1 do
-			for j = 1, #lines[i] - #pattern, 1 do
+			for j = 1, #lines[i] - #pattern + 1, 1 do
 				if (pattern == sub(lines[i], j, j + #pattern - 1)) then
 					-- print file name if recursive
 					-- otherwise, just line number
