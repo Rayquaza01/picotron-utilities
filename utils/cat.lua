@@ -9,8 +9,8 @@ end
 
 for i = 1, #argv, 1 do
 	content = fetch(argv[i])
-	if content then	
-		print(fetch(argv[i]))
+	if content then
+		print(content)
 	end
 end
 
