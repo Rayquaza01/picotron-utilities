@@ -40,7 +40,7 @@ function print_folder(path, depth)
 			output = output .. indent(filename, depth) .. "\n"
 			print_folder(path.."/"..res[i], depth + 1)
 		else
- 			output = output .. indent(res[i], depth) .. "\n"
+			output = output .. indent(res[i], depth) .. "\n"
 		end
 		--print(res[i])
 	end
