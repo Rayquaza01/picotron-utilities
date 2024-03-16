@@ -10,8 +10,8 @@ Includes
     * example: `touch newfile.txt`
 * `tree` - prints a tree view of a directory
     * example: `tree desktop`
-* `download` - downloads a file
-    * example: `download https://gutenberg.org/cache/epub/64317/pg64317.txt gatsby.txt`
+* `wget` - downloads a file
+    * example: `wget https://gutenberg.org/cache/epub/64317/pg64317.txt gatsby.txt`
 * `grep` - search within a file or folder
     * examples:
         * `grep _init` (searches for `_init` recursively through pwd)

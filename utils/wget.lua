@@ -2,7 +2,7 @@ cd(env().path)
 local argv = env().argv
 
 if (argv[1] == "--help" or #argv < 2) then
-	print("Usage: download [src url or file] [file]")
+	print("Usage: wget [src url or file] [file]")
 	print("GETs a url or reads a file and saves it to a file.")
 	exit(0)
 end
