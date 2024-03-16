@@ -3,8 +3,6 @@ cd(env().path)
 if (env().argv[1] == "--help") then
 	print("Usage: tree [dir]")
 	print("Prints a tree of the directory structure.")
-	print("(There seems to be an output limit, so it may not print the full tree")
-	print(" if run from a folder with many descendants, like /)")
 	exit(0)
 end
 
