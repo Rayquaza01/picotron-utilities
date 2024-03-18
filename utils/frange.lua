@@ -6,6 +6,7 @@ if (argv[1] == "--help" or #argv < 1) then
 	print("Prints a file range with line numbers.")
 	print("If start and length are omitted, the entire file is printed")
 	print("If start and length are provided, only that range of the file is printed")
+	print("If start is negative, lines from the end of the file are printed")
 	exit(0)
 end
 
@@ -17,17 +18,23 @@ local content = fetch(file)
 if (not content or type(content) != "string") then
 	exit(1)
 end
-
-output = ""
-
 local lines = split(content, "\n", false)
+
+if start<0 then
+	-- negative start = count from end
+	start += #lines+1
+end
+start = mid(start, 1,#lines)
+
 if (length <= 0) then
 	length = #lines
 end
 
+--- output
+local output = {}
 for i = start, min(start + length - 1, #lines), 1 do
-	output = output .. string.format("%d		%s", i, lines[i]) .. "\n"
+	add(output, string.format("%d\t\t%s", i, lines[i]))
 end
 
-print(output)
+print(table.concat(output,"\n"))
 exit(0)
