@@ -13,7 +13,7 @@ path = fullpath(path)
 -- there seems to be a limitation that makes the earlier output get cut off
 -- if there are too many lines printed
 -- so i put all of the lines in a variable and print it all at once to get around that
-output = ""
+output = {}
 
 --printh("ls ["..path.."]")
 
@@ -37,14 +37,14 @@ function print_folder(path, depth)
 		if (fstat(path.."/"..res[i]) == "folder") then
 			filename = res[i].."/"
 			
-			output = output .. indent(filename, depth) .. "\n"
+			add(output, indent(filename, depth))
 			print_folder(path.."/"..res[i], depth + 1)
 		else
-			output = output .. indent(res[i], depth) .. "\n"
+			add(output, indent(res[i], depth))
 		end
 		--print(res[i])
 	end
 end
 
 print_folder(path, 0)
-print(output)
+print(table.concat(output, "\n"))
