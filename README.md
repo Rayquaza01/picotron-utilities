@@ -32,24 +32,24 @@ Includes
 ## Usage
 
 Picotron Utilities can be used in 3 ways:
-* As a bundle command
 * As a yotta utility
+* As a bundle command
 * Manually
+
+### Yotta Utility
+
+To install Picotron Utilities as a yotta utility, run `yotta util install #picotron_utilities`. This requires [yotta](https://www.lexaloffle.com/bbs/?tid=140833).
 
 ### Bundle Command
 
 To install Picotron Utilities as a bundle command, save the cartridge to your utility path (`/appdata/system/util`).
 
-Example: `save /appdata/system/util/busybox` installs Picotron Utilities with the commandname `busybox`. (You can set this to anything you like).
+```
+load #picotron_utilities
+save /appdata/system/util/busybox
+```
 
-Then, to run a command, pass the command as an argument to the bundle command, like `busybox tree` or `busybox grep function main.lua`
-
-You **cannot** run this cart with Ctrl+R. (Since the commands require arguments, it wouldn't do anything anyway.)
-
-
-### Yotta Utility
-
-To install Picotron Utilities as a yotta utility, run `yotta util install #picotron_utilities`. This requires [yotta](https://www.lexaloffle.com/bbs/?tid=140833).
+Once installed, you can run a bundled command by passing that command as an argument, like `busybox tree`.
 
 ### Manual Install
 
