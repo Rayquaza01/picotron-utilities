@@ -1,3 +1,7 @@
+--[[pod_format="raw",created="2024-03-22 02:06:24",modified="2024-03-22 02:08:17",revision=15]]
+-- frange is part of Picotron Utilities
+-- https://github.com/Rayquaza01/picotron-utilities
+
 cd(env().path)
 local argv = env().argv
 

@@ -1,2 +1,0 @@
-cd(env().path)
-?pwd()
