@@ -20,7 +20,7 @@ pkg = env().prog_name
 commands_path = pkg .. "/exports/appdata/system/util"
 
 -- error message if try to run cart with ctrl+r
-if not pkg:find("%.p64$") then
+if not (pkg:find("%.p64$") or pkg:find("%.p64%.png$")) then
 	print("This cart can't be run directly!")
 	print("Please run this from the commandline.")
 	
