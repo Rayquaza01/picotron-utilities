@@ -49,7 +49,7 @@ You **cannot** run this cart with Ctrl+R. (Since the commands require arguments,
 
 ### Yotta Utility
 
-To install Picotron Utilities as a yotta utility, run `yotta install #picotron_utilities`. This requires [yotta](https://www.lexaloffle.com/bbs/?tid=140833).
+To install Picotron Utilities as a yotta utility, run `yotta util install #picotron_utilities`. This requires [yotta](https://www.lexaloffle.com/bbs/?tid=140833).
 
 ### Manual Install
 
