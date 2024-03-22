@@ -65,7 +65,7 @@ else
 		end
 	
 		-- copy this env to new process
-		local new_env = env()
+		new_env = env()
 		-- replace argv
 		new_env.argv = new_argv
 
