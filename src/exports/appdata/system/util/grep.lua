@@ -1,4 +1,4 @@
---[[pod_format="raw",created="2024-03-22 00:45:03",modified="2024-03-22 02:08:17",revision=255]]
+--[[pod_format="raw",created="2024-03-22 00:45:03",modified="2024-08-21 16:47:38",revision=273]]
 -- grep is part of Picotron Utilities
 -- https://github.com/Rayquaza01/picotron-utilities
 
@@ -14,6 +14,15 @@ if (argv[1] == "--help" or #argv < 1) then
 	exit(0)
 end
 
+function right_pad(str, len, pad)
+	if not pad then pad = " " end
+	while #str < len do
+		str = str .. pad
+	end
+
+	return str
+end
+
 local pattern = argv[1]
 local file = argv[2] or "."
 
@@ -21,7 +30,7 @@ output = {}
 
 function search_file(pattern, file, print_fname)
 	local filetype = fstat(file)
-	
+
 	if (filetype == "file") then
 		local content = fetch(file)
 		-- ignore blank or non text files
@@ -30,18 +39,31 @@ function search_file(pattern, file, print_fname)
 		end
 
 		local lines = split(content, "\n", false)
-		
+
 		-- print("searching " .. file)
+
+		line_number_length = #tostr(#lines) + 1
 
 		for i = 1, #lines, 1 do
 			-- if you want to make grep use exact matching instead of pattern matching
 			-- add the plain=true arg to find
 			-- https://www.lua.org/manual/5.4/manual.html#pdf-string.find
-			if lines[i]:find(pattern) then
+			local pstart, pend = lines[i]:find(pattern)
+			if pstart then
+				local l = lines[i]:gsub("\t", " ")
+				l = string.format(
+					"%s\fb%s\f7%s",
+					l:sub(0, pstart - 1),
+					l:sub(pstart, pend),
+					l:sub(pend + 1, #l)
+				)
+				
+				local line_no = right_pad(tostr(i), line_number_length)
+
 				if print_fname then
-					add(output, string.format("%s:%d\t\t%s", file, i, lines[i]))
+					add(output, string.format("%s:%s%s", file, line_no, l))
 				else
-					add(output, string.format("%d\t\t%s", i, lines[i]))
+					add(output, string.format("%s%s", line_no, l))
 				end
 			end
 		end
