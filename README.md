@@ -54,3 +54,11 @@ Once installed, you can run a bundled command by passing that command as an argu
 ### Manual Install
 
 To add these commands to Picotron manually, add the lua files found in [src/exports/appdata/system/util](https://github.com/Rayquaza01/picotron-utilities/tree/main/src/exports/appdata/system/util) to `/appdata/system/util`
+
+`rsync -av src/exports ~/.lexaloffle/Picotron/drive`
+
+### Stow
+
+Using stow, symlinks for the scripts will be created in the Picotron drive. To install the commands using stow, run `stow -d src/ --adopt -t ~/.lexaloffle/Picotron/drive/ -Sv exports`.
+
+`install.sh` and `uninstall.sh` will do this automatically. 
