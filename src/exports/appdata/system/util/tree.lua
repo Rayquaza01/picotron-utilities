@@ -22,10 +22,10 @@ output = {}
 --printh("ls ["..path.."]")
 
 function indent(str, length)
-	for i = 1, length, 1 do
+	for _ = 1, length, 1 do
 		str = "	" .. str
 	end
-	
+
 	return str
 end
 
@@ -36,11 +36,11 @@ function print_folder(path, depth)
 		print("could not open path "..tostr(path))
 		exit(0)
 	end
-	
+
 	for i = 1, #res, 1 do
 		if (fstat(path.."/"..res[i]) == "folder") then
 			filename = res[i].."/"
-			
+
 			add(output, indent(filename, depth))
 			print_folder(path.."/"..res[i], depth + 1)
 		else

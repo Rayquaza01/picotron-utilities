@@ -3,7 +3,7 @@
 -- https://github.com/Rayquaza01/picotron-utilities
 
 cd(env().path)
-local argv = env().argv
+local argv = env().argv or {}
 
 if (argv[1] == "--help" or #argv < 1) then
 	print("Usage: grep [pattern] [file or folder]")
@@ -57,7 +57,7 @@ function search_file(pattern, file, print_fname)
 					l:sub(pstart, pend),
 					l:sub(pend + 1, #l)
 				)
-				
+
 				local line_no = right_pad(tostr(i), line_number_length)
 
 				if print_fname then

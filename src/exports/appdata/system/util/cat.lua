@@ -3,7 +3,7 @@
 -- https://github.com/Rayquaza01/picotron-utilities
 
 cd(env().path)
-local argv = env().argv
+local argv = env().argv or {}
 
 if (argv[1] == "--help") then
 	print("Usage: cat [FILE]...")

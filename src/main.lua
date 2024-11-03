@@ -9,7 +9,7 @@ function includes(tbl, val)
 			return true
 		end
 	end
-	
+
 	return false
 end
 
@@ -23,24 +23,24 @@ commands_path = pkg .. "/exports/appdata/system/util"
 if not (pkg:find("%.p64$") or pkg:find("%.p64%.png$")) then
 	print("This cart can't be run directly!")
 	print("Please run this from the commandline.")
-	
+
 	print("")
-	
+
 	print("To install as a bundle command, save this cart to your util path")
 	print("\tsave /appdata/system/util/busybox")
 	print("Then, you can run a bundled command by passing that command as an argument")
 	print("\tbusybox tree")
-	
+
 	print("")
-	
+
 	print("To install individual commands, install this cart with yotta")
 	print("\tyotta util install #picotron_utilities")
 
-	print("")	
+	print("")
 
 	print("You can also manually copy the files from /exports inside this cart")
 	print("\tcp /ram/cart/exports/appdata/system/util/grep.lua /appdata/system/util")
-	
+
 	print("")
 else
 	exports = ls(commands_path)
@@ -63,7 +63,7 @@ else
 		for i = 2, #argv, 1 do
 			add(new_argv, argv[i])
 		end
-	
+
 		-- copy this env to new process
 		new_env = env()
 		-- replace argv
