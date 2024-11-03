@@ -7,6 +7,8 @@ local argv = env().argv or {}
 local pattern = argv[1]
 local search_path = argv[2] or "."
 
+search_path = search_path:gsub("/$", "")
+
 output = {}
 
 if (argv[1] == "--help" or #argv < 1) then
@@ -25,19 +27,21 @@ function search_folder(term, path)
 	end
 
 	for i = 1, #res, 1 do
+		-- search in only last part of file
+		local pstart, pend = res[i]:find(term)
+		if pstart then
+			add(output, string.format(
+				"%s/%s\fb%s\f7%s",
+				path,
+				res[i]:sub(0, pstart - 1),
+				res[i]:sub(pstart, pend),
+				res[i]:sub(pend + 1, #res[i])
+			))
+		end
+
 		local fullpath = path.."/"..res[i]
 		if fstat(fullpath) == "folder" then
 			fullpath = fullpath.."/"
-		end
-
-		local pstart, pend = fullpath:find(term)
-		if pstart then
-			add(output, string.format(
-				"%s\fb%s\f7%s",
-				fullpath:sub(0, pstart - 1),
-				fullpath:sub(pstart, pend),
-				fullpath:sub(pend + 1, #fullpath)
-			))
 		end
 
 		if (fstat(fullpath) == "folder") then
