@@ -28,6 +28,18 @@ Includes
         * `frange file.txt -20 10` (prints 10 lines starting from 20 lines before end)
 * `pwd` - print working directory (UNIX-style shortcut for print(pwd()))
     * example: `pwd`
+* `echo` - print arguments
+* `fd` - search for a file by name
+    * pattern is a lua pattern.
+    * examples:
+        * `fd main.lua` (Searches for a file named `main.lua` in the current folder, or its children
+        * `fd .+%.lua projects/` (Searches for all `.lua` files in the `projects` folder)
+* `stat` - print the file status and metadata
+    * example: `stat file.txt`
+    * File sizes are printed using binary prefixes by default.
+    * If you want metric prefixes, use the `-s` or `--metric` flags
+    * If you want binary prefixes, use the `-b` or `--binary` flags
+    * If you want bytes, use the `-B` or `--bytes` flags
 
 ## Usage
 
@@ -61,4 +73,4 @@ To add these commands to Picotron manually, add the lua files found in [src/expo
 
 Using stow, symlinks for the scripts will be created in the Picotron drive. To install the commands using stow, run `stow -d src/ --adopt -t ~/.lexaloffle/Picotron/drive/ -Sv exports`.
 
-`install.sh` and `uninstall.sh` will do this automatically. 
+`install.sh` and `uninstall.sh` will do this automatically.
