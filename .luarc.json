@@ -1,0 +1,30 @@
+{
+    "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+    "workspace.checkThirdParty": false,
+    "workspace.library": ["~/.local/lib/picotron-definitions"],
+    "runtime.version": "LuaJIT",
+    "diagnostics.disable": ["lowercase-global"],
+    "runtime.nonstandardSymbol": ["!=", "+=", "-=", "*=", "/=", "%=", "^=", "|=", "&=", "<<=", ">>=", "//"],
+    "runtime.builtin": {
+        "basic": "enable",
+        "bit": "disable",
+        "bit32": "disable",
+        "builtin": "enable",
+        "coroutine": "enable",
+        "debug": "enable",
+        "ffi": "disable",
+        "io": "disable",
+        "jit": "disable",
+        "math": "enable",
+        "os": "disable",
+        "package": "disable",
+        "string": "enable",
+        "table": "enable",
+        "table.clear": "disable",
+        "table.new": "disable",
+        "utf8": "enable"
+    },
+    "runtime.special": {
+        "include": "require"
+    }
+}
