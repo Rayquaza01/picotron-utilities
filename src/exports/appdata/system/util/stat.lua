@@ -70,11 +70,11 @@ function sizeToReadable(sz)
 
 	local ctable = prefix == "bi" and conversions.bi or conversions.si
 
-	if sz > ctable.G then
+	if sz >= ctable.G then
 		return string.format("%.2f%s", sz / ctable.G, ctable.prefixes[3])
-	elseif sz > ctable.M then
+	elseif sz >= ctable.M then
 		return string.format("%.2f%s", sz / ctable.M, ctable.prefixes[2])
-	elseif sz > ctable.K then
+	elseif sz >= ctable.K then
 		return string.format("%.2f%s", sz / ctable.K, ctable.prefixes[1])
 	end
 
