@@ -93,7 +93,7 @@ for arg in all(argv) do
 	end
 end
 
-ftype, size, origin = fstat(argv[1])
+ftype, size, origin = fstat(file)
 if ftype == nil then
 	print("Failed to stat file")
 	exit(1)
