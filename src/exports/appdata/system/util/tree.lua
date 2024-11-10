@@ -22,11 +22,7 @@ local output = {}
 --printh("ls ["..path.."]")
 
 function indent(str, length)
-	for _ = 1, length, 1 do
-		str = "	" .. str
-	end
-
-	return str
+	return string.format("\*%d\t%s", length, str)
 end
 
 function print_folder(path, depth)
