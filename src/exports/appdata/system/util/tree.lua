@@ -10,14 +10,14 @@ if (env().argv[1] == "--help") then
 	exit(0)
 end
 
-local path = env().argv[1] or "."
+local start_path = env().argv[1] or "."
 
-path = fullpath(path)
+start_path = fullpath(start_path)
 
 -- there seems to be a limitation that makes the earlier output get cut off
 -- if there are too many lines printed
 -- so i put all of the lines in a variable and print it all at once to get around that
-output = {}
+local output = {}
 
 --printh("ls ["..path.."]")
 
@@ -37,18 +37,43 @@ function print_folder(path, depth)
 		exit(0)
 	end
 
-	for i = 1, #res, 1 do
-		if (fstat(path.."/"..res[i]) == "folder") then
-			filename = res[i].."/"
+	for file in all(res) do
+		local col = "6" -- default color grey
+
+		local ftype, _, origin = fstat(path .. "/" .. file)
+
+		if (ftype == "folder") then
+			if not file:find("%.p64$") and not file:find("%.p64%.png$") and not file:find("%.p64%.rom$") then
+				col = "e" -- pink, if folder (not p64)
+				if origin then
+					col = "b" -- green, if virtual folder like /system and /ram
+				end
+			end
+
+			local filename = string.format("\f%s%s/\f7", col, file)
 
 			add(output, indent(filename, depth))
-			print_folder(path.."/"..res[i], depth + 1)
+			print_folder(path .. "/" .. file, depth + 1)
 		else
-			add(output, indent(res[i], depth))
+			if file:find("%.lua$") then
+				col = "c" -- blue
+			end
+
+			if file:find("%.txt$") then
+				col = "a" -- yellow
+			end
+
+			if file:find("%.pod$") then
+				col = "9" -- orange
+			end
+
+			local filename = string.format("\f%s%s\f7", col, file)
+
+			add(output, indent(filename, depth))
 		end
-		--print(res[i])
+		--print(file)
 	end
 end
 
-print_folder(path, 0)
+print_folder(start_path, 0)
 print(table.concat(output, "\n"))
