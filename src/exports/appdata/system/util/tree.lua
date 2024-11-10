@@ -53,13 +53,9 @@ function print_folder(path, depth)
 		else
 			if file:find("%.lua$") then
 				col = "c" -- blue
-			end
-
-			if file:find("%.txt$") then
+			elseif file:find("%.txt$") then
 				col = "a" -- yellow
-			end
-
-			if file:find("%.pod$") then
+			elseif file:find("%.pod$") then
 				col = "9" -- orange
 			end
 
