@@ -34,36 +34,39 @@ function print_folder(path, depth)
 	end
 
 	for file in all(res) do
-		local col = "6" -- default color grey
+		-- workaround picotron bug - sometimes ls returns nil in some /system folders
+		if file ~= nil then
+			local col = "6" -- default color grey
 
-		local ftype, _, origin = fstat(path .. "/" .. file)
+			local ftype, _, origin = fstat(path .. "/" .. file)
 
-		if (ftype == "folder") then
-			if not file:find("%.p64$") and not file:find("%.p64%.png$") and not file:find("%.p64%.rom$") then
-				col = "e" -- pink, if folder (not p64)
-				if origin then
-					col = "b" -- green, if virtual folder like /system and /ram
+			if (ftype == "folder") then
+				if not file:find("%.p64$") and not file:find("%.p64%.png$") and not file:find("%.p64%.rom$") then
+					col = "e" -- pink, if folder (not p64)
+					if origin then
+						col = "b" -- green, if virtual folder like /system and /ram
+					end
 				end
+
+				local filename = string.format("\f%s%s/\f7", col, file)
+
+				add(output, indent(filename, depth))
+				print_folder(path .. "/" .. file, depth + 1)
+			else
+				if file:find("%.lua$") then
+					col = "c" -- blue
+				elseif file:find("%.txt$") then
+					col = "a" -- yellow
+				elseif file:find("%.pod$") then
+					col = "9" -- orange
+				end
+
+				local filename = string.format("\f%s%s\f7", col, file)
+
+				add(output, indent(filename, depth))
 			end
-
-			local filename = string.format("\f%s%s/\f7", col, file)
-
-			add(output, indent(filename, depth))
-			print_folder(path .. "/" .. file, depth + 1)
-		else
-			if file:find("%.lua$") then
-				col = "c" -- blue
-			elseif file:find("%.txt$") then
-				col = "a" -- yellow
-			elseif file:find("%.pod$") then
-				col = "9" -- orange
-			end
-
-			local filename = string.format("\f%s%s\f7", col, file)
-
-			add(output, indent(filename, depth))
+			--print(file)
 		end
-		--print(file)
 	end
 end
 

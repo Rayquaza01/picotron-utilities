@@ -71,7 +71,10 @@ function search_file(pattern, file, print_fname)
 		-- if folder, search recursively
 		local dir = ls(file)
 		for i = 1, #dir, 1 do
-			search_file(pattern, file.."/"..dir[i], true)
+			-- workaround picotron bug - sometimes ls returns nil in some /system folders
+			if dir[i] ~= nil then
+				search_file(pattern, file.."/"..dir[i], true)
+			end
 		end
 	end
 end
