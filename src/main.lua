@@ -1,5 +1,5 @@
 --[[pod_format="raw",created="2024-03-15 13:58:36",modified="2024-03-22 02:08:17",revision=414]]
--- Picotron Utilities v1.0
+-- Picotron Utilities v1.1.2
 -- https://github.com/Rayquaza01/picotron-utilities
 -- by Arnaught
 
