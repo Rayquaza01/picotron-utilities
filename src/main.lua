@@ -15,7 +15,7 @@ end
 
 cd(env().path)
 argv = env().argv
-pkg = env().prog_name
+pkg = env().argv[0]
 
 commands_path = pkg .. "/exports/appdata/system/util"
 
