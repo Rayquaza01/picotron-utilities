@@ -1,4 +1,4 @@
---[[pod_format="raw",created="2024-03-22 02:06:02",modified="2024-03-22 02:08:17",revision=20]]
+--[[pod_format="raw",created="2024-03-22 02:06:02",modified="2025-07-21 04:19:45",revision=21,xstickers={}]]
 -- cat is part of Picotron Utilities
 -- https://github.com/Rayquaza01/picotron-utilities
 
@@ -14,7 +14,11 @@ end
 for i = 1, #argv, 1 do
 	content = fetch(argv[i])
 	if content then
-		print(content)
+		if type(content) == "string" then
+			print(content)
+		else
+			print(pod(content))
+		end
 	end
 end
 
