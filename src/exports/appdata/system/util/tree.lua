@@ -22,7 +22,7 @@ local icons = {
 local function get_icon(ext)
 	if ext == "lua" then
 		return icons.LUA
-	elseif ext == txt or ext == md then
+	elseif ext == "txt" or ext == "md" then
 		return icons.TXT
 	elseif ext == "gfx" or ext == "png" or ext == "map" or ext == "qoi" then
 		return icons.IMAGE
